@@ -1,0 +1,18 @@
+{
+  "name": "@hostconfig/modules",
+  "version": "0.0.0-alpha",
+  "main": "index.js",
+  "repository": "https://github.com/hostconfig/modules.git",
+  "author": "StoneyDSP <nathanjhood@googlemail.com>",
+  "license": "MIT",
+  "private": false,
+  "dependencies": {
+    "cmake-js": "^7.2.1"
+  },
+  "scripts": {
+    "install": "cmake-js compile"
+  },
+  "binary": {
+    "napi_versions": [7]
+  }
+}
