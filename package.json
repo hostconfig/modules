@@ -13,14 +13,13 @@
   "private": false,
   "packageManager": "yarn@1.22.19",
   "scripts": {
-    "install": "cmake-js compile",
-    "build": "tsc -p ./tsconfig.json && tsc-alias && ts-add-js-extension --dir=dist",
-    "postbuild": "yarn copy:images && yarn copy:javascripts && yarn copy:stylesheets",
-    "rebuild": "yarn clean && yarn build",
-    "copy:images" : "cp -rv ./src/images ./dist/images",
-    "copy:javascripts" : "cp -rv ./src/javascripts ./dist/javascripts",
-    "copy:stylesheets" : "cp -rv ./src/stylesheets ./dist/stylesheets",
-    "clean": "rm -rvf ./dist",
+    "postinstall": "cmake-js compile",
+    "configure": "cmake-js configure",
+    "reconfigure": "cmake-js reconfigure",
+    "build": "cmake-js build",
+    "rebuild": "cmake-js rebuild",
+    "start": "node index.cjs",
+    "clean": "cmake-js clean",
     "wipe": "yarn clean && rm -rvf ./node_modules"
   },
   "dependencies": {

@@ -104,11 +104,11 @@
 # define HOSTCONFIG_STRINGIFY_HELPER(n) #n
 #endif
 
+#ifndef DEC
 /**
  * @name DEC
  * @brief Convert integer to decimal digit literals.
 */
-#ifndef DEC
  #define DEC(n)                   \
    ('0' + (((n) / 10000000)%10)), \
    ('0' + (((n) / 1000000)%10)),  \
@@ -120,11 +120,11 @@
    ('0' +  ((n) % 10))
 #endif
 
+#ifndef HEX
 /**
  * @name HEX
  * @brief Convert integer to hex digit literals.
 */
-#ifndef HEX
  #define HEX(n)              \
     ('0' + ((n)>>28 & 0xf)), \
     ('0' + ((n)>>24 & 0xf)), \
@@ -340,9 +340,11 @@
 #endif
 
 #if HOSTCONFIG_VERSION_MAJOR >= 2
+// V2 breaking changes here...
 #endif  // HOSTCONFIG_VERSION >= 2
 
 #if HOSTCONFIG_VERSION_MAJOR >= 3
+// V3 breaking changes here...
 #endif // HOSTCONFIG_VERSION >= 3
 
 #endif // HOSTCONFIG_CONFIG_H
