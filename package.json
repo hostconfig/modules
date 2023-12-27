@@ -12,10 +12,6 @@
   },
   "private": false,
   "packageManager": "yarn@1.22.19",
-  "engines": {
-    "node": "~18.18.0"
-  },
-  "engineStrict" : false,
   "scripts": {
     "install": "cmake-js compile",
     "build": "tsc -p ./tsconfig.json && tsc-alias && ts-add-js-extension --dir=dist",
