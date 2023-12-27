@@ -1,7 +1,13 @@
-// hello.cc
-#include <node.h>
+/*************************************************************************//**
+ * @file hello.cc
+ * @author Nathan J. Hood <nathanjhood@googlemail.com>
+ * @version 0.0.0-alpha
+ ****************************************************************************/
 
-namespace demo {
+#include <hostconfig/modules/hello.h>
+
+namespace hostconfig {
+namespace modules {
 
 using v8::FunctionCallbackInfo;
 using v8::Isolate;
@@ -23,4 +29,5 @@ void Initialize(Local<Object> exports) {
 
 NODE_MODULE(NODE_GYP_MODULE_NAME, Initialize)
 
-}  // namespace demo
+}  // namespace modules
+}  // namespace hostconfig
