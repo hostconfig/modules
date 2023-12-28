@@ -54,12 +54,78 @@ void Favicon(const v8::FunctionCallbackInfo<v8::Value>& args)
   );
 }
 
+void Index(const v8::FunctionCallbackInfo<v8::Value>& args)
+{
+  v8::Isolate* isolate = args.GetIsolate();
+
+  const char* html =
+  "<!DOCTYPE html>"
+  "<html lang=\"en\">"
+  "<head>"
+  "  <meta charset=\"UTF-8\">"
+  "  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">"
+  "  <link rel=\"icon\" type=\"image/x-icon\" href=\"favicon.ico\">"
+  "  <title>hostconfig/modules</title>"
+  "</head>"
+  "<body>"
+  "  <h1>Success...</h1>"
+  "  <p>This is a compiled binary!</p>"
+  "</body>"
+  "</html>";
+
+  args.GetReturnValue().Set(v8::String::NewFromUtf8(
+    isolate,
+    html
+    ).ToLocalChecked()
+  );
+}
+
+void About(const v8::FunctionCallbackInfo<v8::Value>& args)
+{
+  v8::Isolate* isolate = args.GetIsolate();
+
+  const char* html =
+  "<!DOCTYPE html>"
+  "<html lang=\"en\">"
+  "<head>"
+  "  <meta charset=\"UTF-8\">"
+  "  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">"
+  "  <link rel=\"icon\" type=\"image/x-icon\" href=\"favicon.ico\">"
+  "  <title>hostconfig/modules</title>"
+  "</head>"
+  "<body>"
+  "  <h1>hostconfig/modules</h1>"
+  "  <a href=\"https://github.com/hostconfig/modules\">Read about this project here!</a>"
+  "</body>"
+  "</html>";
+
+  args.GetReturnValue().Set(v8::String::NewFromUtf8(
+    isolate,
+    html
+    ).ToLocalChecked()
+  );
+}
+
 void Initialize(v8::Local<v8::Object> exports) {
   NODE_SET_METHOD(exports, "hello", Hello);
   NODE_SET_METHOD(exports, "favicon", Favicon);
+  NODE_SET_METHOD(exports, "index", Index);
+  NODE_SET_METHOD(exports, "about", About);
 }
 
 NODE_MODULE(NODE_GYP_MODULE_NAME, Initialize)
 
 }  // namespace modules
 }  // namespace hostconfig
+
+// <!DOCTYPE html>
+// <html lang="en">
+// <head>
+//   <meta charset="UTF-8">
+//   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+//   <title>Document</title>
+// </head>
+// <body>
+
+// </body>
+// </html>

@@ -85,9 +85,7 @@ if(MSVC AND CMAKE_JS_NODELIB_DEF AND CMAKE_JS_NODELIB_TARGET)
   execute_process(COMMAND ${CMAKE_AR} /def:${CMAKE_JS_NODELIB_DEF} /out:${CMAKE_JS_NODELIB_TARGET} ${CMAKE_STATIC_LINKER_FLAGS})
 endif()
 
-
-
-# Optionally, compile some resources to binary
+# Compile some resources to binary
 include("CMakeRC.cmake")
 
 cmrc_add_resource_library(icons
