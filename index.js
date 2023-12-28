@@ -2,6 +2,8 @@ import modules from './modules.cjs'
 
 console.log(modules.hello());
 
+console.log('Should be pi: %s', modules.add(1, 2.14159))
+
 import express from 'express';
 
 import debugLib from 'debug'
