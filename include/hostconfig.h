@@ -6,8 +6,12 @@
 #ifndef HOSTCONFIG_H
 #define HOSTCONFIG_H
 
-#include "hostconfig/version.h"             // NOLINT(build/include_directory)
-#include "hostconfig/config.h"              // NOLINT(build/include_directory)
+// #include <cmrc/cmrc.hpp>
+
+#include <hostconfig/version.h>             // NOLINT(build/include_directory)
+#include <hostconfig/config.h>              // NOLINT(build/include_directory)
+
+// CMRC_DECLARE(hostconfig);
 
 // We reserve the hostconfig_* prefix for macros defined in hostconfig public
 // API and assume there are no name conflicts with the embedder's code.
@@ -22,6 +26,12 @@ class Platform;
 /**
  * \example process.cc
  */
+
+// namespace icons
+// {
+// auto fs = cmrc::hostconfig::get_filesystem();
+// auto favicon = fs.open("favicon.ico");
+// }
 
 }  // namespace hostconfig
 

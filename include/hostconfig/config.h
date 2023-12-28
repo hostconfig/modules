@@ -107,32 +107,34 @@
 #ifndef DEC
 /**
  * @name DEC
- * @brief Convert integer to decimal digit literals.
+ * @brief Convert integers to decimal digit literals.
+ * @param n int
 */
- #define DEC(n)                   \
-   ('0' + (((n) / 10000000)%10)), \
-   ('0' + (((n) / 1000000)%10)),  \
-   ('0' + (((n) / 100000)%10)),   \
-   ('0' + (((n) / 10000)%10)),    \
-   ('0' + (((n) / 1000)%10)),     \
-   ('0' + (((n) / 100)%10)),      \
-   ('0' + (((n) / 10)%10)),       \
+ #define DEC(n)                                                              \
+   ('0' + (((n) / 10000000)%10)),                                            \
+   ('0' + (((n) / 1000000)%10)),                                             \
+   ('0' + (((n) / 100000)%10)),                                              \
+   ('0' + (((n) / 10000)%10)),                                               \
+   ('0' + (((n) / 1000)%10)),                                                \
+   ('0' + (((n) / 100)%10)),                                                 \
+   ('0' + (((n) / 10)%10)),                                                  \
    ('0' +  ((n) % 10))
 #endif
 
 #ifndef HEX
 /**
  * @name HEX
- * @brief Convert integer to hex digit literals.
+ * @brief Convert integers to hex digit literals.
+ * @param n int
 */
- #define HEX(n)              \
-    ('0' + ((n)>>28 & 0xf)), \
-    ('0' + ((n)>>24 & 0xf)), \
-    ('0' + ((n)>>20 & 0xf)), \
-    ('0' + ((n)>>16 & 0xf)), \
-    ('0' + ((n)>>12 & 0xf)), \
-    ('0' + ((n)>>8  & 0xf)), \
-    ('0' + ((n)>>4  & 0xf)), \
+ #define HEX(n)                                                              \
+    ('0' + ((n)>>28 & 0xf)),                                                 \
+    ('0' + ((n)>>24 & 0xf)),                                                 \
+    ('0' + ((n)>>20 & 0xf)),                                                 \
+    ('0' + ((n)>>16 & 0xf)),                                                 \
+    ('0' + ((n)>>12 & 0xf)),                                                 \
+    ('0' + ((n)>>8  & 0xf)),                                                 \
+    ('0' + ((n)>>4  & 0xf)),                                                 \
     ('0' + ((n)     & 0xf))
 #endif
 
@@ -224,46 +226,66 @@
  *****************************************************************************
 */
 
-#if HOSTCONFIG_HAS_INCLUDE(<node/node.h>)
+#if HOSTCONFIG_HAS_INCLUDE(<node.h>)
  #define HAVE_NODE_H 1
 #else
  #define HAVE_NODE_H 0
- #error "Error: Cannot find '<node/node.h>' in the include path..."
+ #error "Error: Cannot find '<node.h>' in the include path..."
 #endif
 
-#if HOSTCONFIG_HAS_INCLUDE(<node/node_version.h>)
+#if HOSTCONFIG_HAS_INCLUDE(<node_version.h>)
  #define HAVE_NODE_VERSION_H 1
 #else
  #define HAVE_NODE_VERSION_H 0
- #error "Error: Cannot find '<node/node.h>' in the include path..."
+ #error "Error: Cannot find '<node_version.h>' in the include path..."
 #endif
 
-#if HOSTCONFIG_HAS_INCLUDE(<node/node_api.h>)
+/**
+ * node-api-headers
+ */
+#if HOSTCONFIG_HAS_INCLUDE(<node_api.h>)
  #define HAVE_NODE_API_H 1
 #else
  #define HAVE_NODE_API_H 0
- #warning "Warning: Cannot find '<node/node_api.h>' in the include path..."
+ #warning "Warning: Cannot find '<node_api.h>' in the include path..."
 #endif
 
-#if HOSTCONFIG_HAS_INCLUDE(<node/node_api_types.h>)
+#if HOSTCONFIG_HAS_INCLUDE(<node_api_types.h>)
  #define HAVE_NODE_API_TYPES_H 1
 #else
  #define HAVE_NODE_API_TYPES_H 0
- #warning "Warning: Cannot find '<node/node_api_types.h>' in the include path..."
+ #warning "Warning: Cannot find '<node_api_types.h>' in the include path..."
 #endif
 
-#if HOSTCONFIG_HAS_INCLUDE(<node/js_native_api.h>)
+#if HOSTCONFIG_HAS_INCLUDE(<js_native_api.h>)
  #define HAVE_JS_NATIVE_API_H 1
 #else
  #define HAVE_JS_NATIVE_API_H 0
- #warning "Warning: Cannot find '<node/js_native_api.h>' in the include path..."
+ #warning "Warning: Cannot find '<js_native_api.h>' in the include path..."
 #endif
 
-#if HOSTCONFIG_HAS_INCLUDE(<node/js_native_api_types.h>)
+#if HOSTCONFIG_HAS_INCLUDE(<js_native_api_types.h>)
  #define HAVE_JS_NATIVE_API_TYPES_H 1
 #else
  #define HAVE_JS_NATIVE_API_TYPES_H 0
- #warning "Warning: Cannot find '<node/js_native_api_types.h>' in the include path..."
+ #warning "Warning: Cannot find '<js_native_api_types.h>' in the include path..."
+#endif
+
+/**
+ * node-addon-api
+ */
+#if HOSTCONFIG_HAS_INCLUDE(<napi.h>)
+ #define HAVE_NAPI_H 1
+#else
+ #define HAVE_NAPI_H 0
+ #warning "Warning: Cannot find '<napi.h>' in the include path..."
+#endif
+
+#if HOSTCONFIG_HAS_INCLUDE(<napi-inl.h>)
+ #define HAVE_NAPI_INL_H 1
+#else
+ #define HAVE_NAPI_INL_H 0
+ #warning "Warning: Cannot find '<napi-inl.h>' in the include path..."
 #endif
 
 // ...
@@ -346,5 +368,11 @@
 #if HOSTCONFIG_VERSION_MAJOR >= 3
 // V3 breaking changes here...
 #endif // HOSTCONFIG_VERSION >= 3
+
+// #ifdef USE_FIRST_VERSION
+// #pragma comment(lib, "vers1.lib")
+// #else
+// #pragma comment(lib, "vers2.lib")
+// #endif
 
 #endif // HOSTCONFIG_CONFIG_H

@@ -18,12 +18,14 @@
     "reconfigure": "cmake-js reconfigure",
     "build": "cmake-js build",
     "rebuild": "cmake-js rebuild",
-    "start": "node index.cjs",
     "clean": "cmake-js clean",
-    "wipe": "yarn clean && rm -rvf ./node_modules"
+    "wipe": "yarn clean && rm -rvf ./node_modules",
+    "start": "node index.js"
   },
   "dependencies": {
     "cmake-js": "^7.2.1",
+    "node-addon-api": "^7.0.0",
+    "node-api-headers": "^1.1.0",
     "rimraf": "^5.0.5",
     "ts-add-js-extension": "^1.6.0",
     "tsc-alias": "^1.8.8"
@@ -43,6 +45,8 @@
     "typescript": "^5.3.3"
   },
   "binary": {
-    "napi_versions": [7]
+    "napi_versions": [
+      7
+    ]
   }
 }

@@ -8,7 +8,7 @@
 #ifndef HOSTCONFIG_MODULES_HELLO_H
 #define HOSTCONFIG_MODULES_HELLO_H
 
-#include <node/node.h>
+#include <node.h>
 
 namespace hostconfig {
 namespace modules {
