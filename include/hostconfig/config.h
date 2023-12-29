@@ -230,14 +230,14 @@
  #define HAVE_NODE_H 1
 #else
  #define HAVE_NODE_H 0
- #error "Error: Cannot find '<node.h>' in the include path..."
+ #warning "Warning: Cannot find '<node.h>' in the include path..."
 #endif
 
 #if HOSTCONFIG_HAS_INCLUDE(<node_version.h>)
  #define HAVE_NODE_VERSION_H 1
 #else
  #define HAVE_NODE_VERSION_H 0
- #error "Error: Cannot find '<node_version.h>' in the include path..."
+ #warning "Warning: Cannot find '<node_version.h>' in the include path..."
 #endif
 
 /**

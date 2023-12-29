@@ -1,7 +1,5 @@
 #include <node_api.h>
 
-namespace demo {
-
 napi_value Method(napi_env env, napi_callback_info args) {
   napi_value greeting;
   napi_status status;
@@ -24,5 +22,3 @@ napi_value init(napi_env env, napi_value exports) {
 }
 
 NAPI_MODULE(NODE_GYP_MODULE_NAME, init)
-
-}  // namespace demo

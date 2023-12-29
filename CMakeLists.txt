@@ -19,7 +19,7 @@ set (PROJECT_VERSION_TWEAK "-${git_revision}" CACHE STRING "Fourth version numbe
 set(VENDOR_NAME "hostconfig" CACHE STRING "Name of module author/vendor." FORCE)
 
 # We need to include the NodeJs headers somehow...
-include_directories("/usr/include/node")
+# include_directories("/usr/include/node")
 
 # Include Node-API headers
 include(GetNodeAPIHeaders)
@@ -30,10 +30,11 @@ include(GetNodeAPIWrappers)
 # Add our headers to a list
 set(HEADERS)
 list(APPEND HEADERS
-  "include/hostconfig.h"
-  "include/hostconfig/config.h"
-  "include/hostconfig/version.h"
-  "include/hostconfig/modules/hello.h"
+  # "include/hostconfig.h"
+  # "include/hostconfig/config.h"
+  # "include/hostconfig/version.h"
+  # "include/hostconfig/modules/hello.h"
+  "include/hostconfig/modules/class.h"
 )
 
 # If building out-of-source...
@@ -44,7 +45,7 @@ if (NOT ${PROJECT_SOURCE_DIR} EQUAL ${PROJECT_BINARY_DIR})
   endforeach()
 endif()
 
-file(GLOB SOURCE_FILES "src/hostconfig/modules/hello.cpp")
+file(GLOB SOURCE_FILES "src/hostconfig/modules/class.cpp")
 
 # Start a list of targets to be built
 set(TARGETS)
