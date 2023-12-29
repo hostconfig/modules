@@ -1,10 +1,5 @@
 import modules from './modules.cjs'
-
-console.log(modules.hello());
-
-console.log('Should be pi: %s', modules.add(1, 2.14159))
-
-import express from 'express';
+import express from 'express'
 
 import debugLib from 'debug'
 import http from 'http'
@@ -15,6 +10,12 @@ import cookieParser from 'cookie-parser'
 import logger from 'morgan'
 
 const app = express();
+const addon = modules;
+
+console.log(addon.hello());
+
+console.log('Should be pi: %s', addon.add(1, 2.14159))
+
 // view engine setup
 app.set('view engine', 'pug')
 
@@ -26,24 +27,28 @@ app.use(cookieParser())
 app.get('/', (req, res) => {
   res.statusCode = 200;
   res.setHeader('Content-Type', 'text/html');
-  res.end(modules.index());
+  res.end(addon.index());
 })
 
 app.get('/about', (req, res) => {
   res.statusCode = 200;
   res.setHeader('Content-Type', 'text/html');
-  res.end(modules.about());
+  res.end(addon.about());
 })
 
 app.get('/favicon.ico', (req, res) => {
   res.statusCode = 200;
   res.setHeader('Content-Type', 'image/x-icon');
-  res.end(modules.favicon());
+  res.end(addon.favicon());
 })
 
+app.get('/icon__512x512.png', (req, res) => {
+  res.statusCode = 200;
+  res.setHeader('Content-Type', 'image/png');
+  res.end(addon.icon512x512());
+})
 
 const debug = debugLib('hostconfig:modules')
-
 const hostname = '127.0.0.1';
 const port = normalizePort(process?.env?.PORT || '3000')
 
@@ -122,7 +127,7 @@ function onListening() {
 
 process.on("SIGINT", function onSigint() {
   console.info(
-    "Got SIGINT (aka ctrl-c in docker). Graceful shutdown ",
+    "Got SIGINT (aka ctrl-c). Graceful shutdown ",
     new Date().toISOString()
   );
   shutdown();
