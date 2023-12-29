@@ -51,5 +51,6 @@
     "napi_versions": [
       7
     ]
-  }
+  },
+  "types": "index.d.ts"
 }
