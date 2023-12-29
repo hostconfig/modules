@@ -90,10 +90,31 @@ endif()
 include("CMakeRC.cmake")
 
 cmrc_add_resource_library(icons
+
 	ALIAS ${VENDOR_NAME}::icons
 	NAMESPACE ${VENDOR_NAME}::icons
 
-    favicon.ico
+  favicon.ico
+)
+
+cmrc_add_resources(icons
+
+  WHENCE src/img
+
+  src/img/icon__32x32.png
+  src/img/icon__48x48.png
+  src/img/icon__64x64.png
+  src/img/icon__96x96.png
+
+  src/img/icon__144x144.png
+  src/img/icon__168x168.png
+  src/img/icon__256x256.png
+  src/img/icon__512x512.png
+
+  src/img/w_icon__196x128.png
+  src/img/w_icon__384x256.png
+  src/img/w_icon__768x512.png
+  src/img/w_icon__1024x768.png
 )
 
 set_target_properties (icons

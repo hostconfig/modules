@@ -98,3 +98,4 @@ out
 
 # allow list
 !favicon.ico
+!src/img/*.png
