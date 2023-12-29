@@ -25,6 +25,7 @@ Modules::Modules(Napi::Env env, Napi::Object exports)
   DefineAddon(exports, {
     InstanceMethod("hello", &Modules::Hello, napi_enumerable),
     InstanceMethod("favicon", &Modules::Favicon, napi_enumerable),
+    InstanceMethod("icon512x512", &Modules::Icon512x512, napi_enumerable),
     InstanceMethod("index", &Modules::Index, napi_enumerable),
     InstanceMethod("about", &Modules::About, napi_enumerable),
     InstanceMethod("add", &Modules::Add, napi_enumerable)
@@ -56,6 +57,24 @@ Napi::Value Modules::Favicon(const Napi::CallbackInfo& info)
 
   auto fs = cmrc::hostconfig::icons::get_filesystem();
   auto data = fs.open("favicon.ico");
+  auto length = std::distance(data.begin(), data.end());
+  auto favicon = std::string(data.begin(), data.end());
+
+  return Napi::String::New(env, favicon.data());
+}
+
+/**
+ * @brief
+ *
+ * @param info
+ * @return Napi::Value
+ */
+Napi::Value Modules::Icon512x512(const Napi::CallbackInfo& info)
+{
+  Napi::Env env = info.Env();
+
+  auto fs = cmrc::hostconfig::icons::get_filesystem();
+  auto data = fs.open("icon__512x512.png");
   auto length = std::distance(data.begin(), data.end());
   auto favicon = std::string(data.begin(), data.end());
 

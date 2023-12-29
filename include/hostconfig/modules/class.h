@@ -30,10 +30,10 @@ private:
 
   Napi::Value Hello(const Napi::CallbackInfo& info);
   Napi::Value Favicon(const Napi::CallbackInfo& info);
+  Napi::Value Icon512x512(const Napi::CallbackInfo &info);
   Napi::Value Index(const Napi::CallbackInfo& info);
   Napi::Value About(const Napi::CallbackInfo& info);
   Napi::Value Add(const Napi::CallbackInfo& args);
-  Napi::Value Hex(const Napi::CallbackInfo& args);
 
 };
 
